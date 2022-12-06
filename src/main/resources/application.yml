@@ -1,0 +1,50 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: bo
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        default_schema: back_office_dev
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect.storage_engine: innodb
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  main:
+    allow-bean-definition-overriding: true
+  banner-mode: off
+  liquibase:
+    enabled: false
+    change-log: classpath:liquibase-changelog.xml
+server:
+  port: 8090
+  servlet:
+    context-path: /1mg
+timezone:
+  default: Asia/Ho_Chi_Minh
+event:
+  enable: true
+messaging:
+  active: true
+  emailRate: 10000
+logging.level.org.zalando.logbook: TRACE

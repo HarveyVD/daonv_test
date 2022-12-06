@@ -1,0 +1,6 @@
+rootProject.name = 'daonv_onemoung'
+include 'database'
+include 'api'
+include 'service'
+include 'common'
+
